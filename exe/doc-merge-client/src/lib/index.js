@@ -1,0 +1,28 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+var app_1 = require("../../../doc-merge/src/lib/app");
+exports.App = app_1.App;
+var client_1 = require("./client/client");
+exports.Client = client_1.Client;
+var index_1 = require("../../../doc-merge/src/lib/index");
+exports.asyncMiddleware = index_1.asyncMiddleware;
+exports.DownloadHandler = index_1.DownloadHandler;
+exports.EchoPlugin = index_1.EchoPlugin;
+exports.DocGenerator = index_1.DocGenerator;
+exports.ErrorHandler = index_1.ErrorHandler;
+exports.ExtError = index_1.ExtError;
+var index_2 = require("../../../doc-merge/src/lib/index");
+exports.InputFile = index_2.InputFile;
+var fs_1 = require("../../../doc-merge/src/lib/tools/fs");
+exports.readFile = fs_1.readFile;
+exports.saveFile = fs_1.saveFile;
+exports.exists = fs_1.exists;
+exports.getFileAsBase64 = fs_1.getFileAsBase64;
+exports.saveJson = fs_1.saveJson;
+var index_3 = require("../../../doc-merge/src/lib/index");
+exports.Generator = index_3.Generator;
+exports.isIBody = index_3.isIBody;
+exports.OutputType = index_3.OutputType;
+var static_server_1 = require("../../../doc-merge/src/test/static-server");
+exports.createStaticServer = static_server_1.createStaticServer;
+//# sourceMappingURL=index.js.map

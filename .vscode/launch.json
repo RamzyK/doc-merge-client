@@ -1,0 +1,60 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Lancer",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceRoot}/exe/lib/app.js",
+            "stopOnEntry": false,
+            "args": [],
+            "cwd": "${workspaceRoot}",
+            "preLaunchTask": null,
+            "runtimeExecutable": null,
+            "runtimeArgs": [
+                "--nolazy",
+                "-r",
+                "ts-node/register"
+            ],
+            "env": {
+                "NODE_ENV": "development",
+                "PORT": "3000"
+            },
+            "console": "internalConsole",
+            "sourceMaps": true,
+            "outFiles": [
+                "${workspaceRoot}/exe/**/*.js",
+                "${workspaceRoot}/node_modules/boc/exe/**/*.js"
+            ],
+            "skipFiles": [
+                "<node_internals>/**/*.js"
+            ],
+            "protocol": "inspector"
+        },
+        {
+            "name": "Test debug",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceRoot}/node_modules/mocha/bin/_mocha",
+            "stopOnEntry": false,
+            "args": ["--reporter", "spec", "--timeout", "0", "--debug", "--require", "source-map-support/register", "./exe/test/**/*.js"],
+            "cwd": "${workspaceRoot}",
+            "preLaunchTask": null,
+            "runtimeExecutable": null,
+            "runtimeArgs": [
+                "--nolazy",
+            ],
+            "env": {
+                "XNODE_ICU_DATA": "./node_modules/full-icu",
+                "NODE_ENV": "development",
+                "DEBUG_TEST": "true"
+            },
+            "console": "internalConsole",
+            "sourceMaps": true,
+            "outFiles": ["${workspaceRoot}/exe/**/*.js"],
+            "skipFiles": [
+                "<node_internals>/**/*.js"
+              ]
+        }
+    ]
+}
