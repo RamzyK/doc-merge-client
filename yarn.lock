@@ -751,6 +751,10 @@ diff@^3.1.0, diff@^3.2.0:
   version "3.5.0"
   resolved "https://registry.yarnpkg.com/diff/-/diff-3.5.0.tgz#800c0dd1e0a8bfbc95835c202ad220fe317e5a12"
 
+"doc-merge-intf@git+https://github.com/RamzyK/doc-merge-intf.git":
+  version "0.0.1"
+  resolved "git+https://github.com/RamzyK/doc-merge-intf.git#bf5b71bbb9d6a04e55e09f54a1d58da44fcfa186"
+
 docxtemplater@^3.6.2:
   version "3.6.6"
   resolved "https://registry.yarnpkg.com/docxtemplater/-/docxtemplater-3.6.6.tgz#a8da8d09f9f1ea13a1116d2922a6f1648aee7c15"

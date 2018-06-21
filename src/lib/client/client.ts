@@ -1,6 +1,5 @@
-import { InputFileRef, IBody, OutputType } from '../../../../doc-merge-intf/src/lib/index';
+import { InputFileRef, IBody, OutputType } from 'doc-merge-intf';
 import * as request from 'request';
-import { ExtError } from '../../../../doc-merge/src/lib';
 
 // tslint:disable:no-console
 export class Client {
@@ -8,7 +7,7 @@ export class Client {
     constructor(urlService: string) {
         this.urlService = urlService;
     }
-    public async getUrl(type: string, data: any, model: InputFileRef): Promise<any> {
+    public getUrl(type: string, data: any, model: InputFileRef): Promise<string> {
         const body: IBody = {
             data,
             modeleRef: model,
@@ -16,7 +15,7 @@ export class Client {
             outputType: OutputType.url,
         };
         const mergeUrl = this.urlService + '/merge';
-        const responseUrl: any = await new Promise<void>((resolve, reject) => {
+        return new Promise<string>((resolve, reject) => {
             let r = request.post(mergeUrl,
                 {
                     body: JSON.stringify(body),
@@ -27,17 +26,15 @@ export class Client {
                     if (error) {
                         reject(error);
                     } else if (response.statusCode >= 400) {
-                        reject(new ExtError(response.statusCode, responsseBody));
+                        reject(new Error(responsseBody));
                     } else {
                         const { url } = JSON.parse(responsseBody);
-                        resolve(url);
+                        resolve(this.urlService + url);
                     }
                 });
             r.on('error', (error: any) => {
                 reject(error);
             });
         });
-
-        return this.urlService + responseUrl;
     }
 }

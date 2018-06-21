@@ -28,36 +28,36 @@ async function deleteDirectoryContent(dirPath: string) {
 }
 
 describe('Client test', function () {
-    it('test url client', async function () {
-        const tmpFolder = path.join(__dirname, '../../src/test/', 'tmp');
-        if (! await exists(tmpFolder)) {
-            await asyncMkDir(tmpFolder);
-        } else {
-            await deleteDirectoryContent(tmpFolder);
-        }
-        const app = new dm.App({
-            port: 0,
-            tmpFolder,
-        });
-        const server = await app.start();
-        try {
-            const port = server.address().port;
-            const serviceUrl = `http://localhost:${port}`;
+    // it('test url client', async function () {
+    //     const tmpFolder = path.join(__dirname, '../../src/test/', 'tmp');
+    //     if (! await exists(tmpFolder)) {
+    //         await asyncMkDir(tmpFolder);
+    //     } else {
+    //         await deleteDirectoryContent(tmpFolder);
+    //     }
+    //     const app = new dm.App({
+    //         port: 0,
+    //         tmpFolder,
+    //     });
+    //     const server = await app.start();
+    //     try {
+    //         const port = server.address().port;
+    //         const serviceUrl = `http://localhost:${port}`;
 
-            const modelFileName = path.join(__dirname, '../../src/test/docx-generator-data/model.docx');
+    //         const modelFileName = path.join(__dirname, '../../src/test/docx-generator-data/model.docx');
 
-            let body: dm.IBody = {
-                data: {},
-                modeleRef: { url: 'file://' + modelFileName },
-                type: 'docx',
-                outputType: dm.OutputType.url,
-            };
+    //         let body: dm.IBody = {
+    //             data: {},
+    //             modeleRef: { url: 'file://' + modelFileName },
+    //             type: 'docx',
+    //             outputType: dm.OutputType.url,
+    //         };
 
-            let client = new dm.Client(serviceUrl);
-            let clientResponse = await client.getUrl(body.type, body.data, body.modeleRef);
-            assert(clientResponse.startsWith(serviceUrl));
-        } finally {
-            // app.stop();
-        }
-    });
+    //         let client = new dm.Client(serviceUrl);
+    //         let clientResponse = await client.getUrl(body.type, body.data, body.modeleRef);
+    //         assert(clientResponse.startsWith(serviceUrl));
+    //     } finally {
+    //         // app.stop();
+    //     }
+    // });
 });
